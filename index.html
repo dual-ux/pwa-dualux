@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <base href="/">
+  <!-- Ensure full-screen usage on notched iPhones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Author: R.J. van der Zwan, Company: Easywebapp Inc. Category: Dual UX PWA, Patent." />
+  <title>DUAL-UX PWA</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Keep your manifest in <head> so Chrome can see installability -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Register the SW early so installability criteria are met ASAP -->
+  <script src="/js/register-sw.js" defer></script>
+
+  <!-- Optional: PWA Install bundle (for <pwa-install>) -->
+  <script src="/js/pwa-install.bundle.js" defer></script>
+
+  <!-- DUAL-UX Runtime v1.0.0
+      * Event-driven UX-mode runtime with display-mode detection. -->
+  <script type="module">
+    import { dualux } from '/js/dualux.runtime.js';
+    dualux.configure({
+      enableLogging: true,
+      targets: { web: '#web-ux', app: '#app-ux', hiddenClass: 'hidden' },
+      mapping: { standaloneTo: 'app', browserTo: 'web' },
+      routes: { appHome: '/app', webHome: '/' },
+    });
+    dualux.on('modechange', ({ displayMode, uxMode }) => {
+      console.log('DUAL-UX modechange', { displayMode, uxMode });
+    });
+    dualux.init();
+  </script>
+  
+</head>
+<body>
+
+  <!-- Optional <pwa-install> component -->
+  <pwa-install id="installPrompt" manifest="/manifest.json"></pwa-install>
+
+  <!-- Web UX (shown in browser route `/`) -->
+  <div id="web-ux" class="ux-block">
+    <header><h1>Welcome to DUAL-UX Web</h1></header>
+    <main>
+      <p>This is the browser experience.</p>
+      <p>Use the app features by installing the PWA.</p>
+      <p>This app is licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License v3.0</a></p>
+    </main>
+  </div>
+
+  <!-- App UX (shown in installed/fullscreen route `/app`) -->
+  <div id="app-ux" class="ux-block">
+    <header><h1>DUAL-UX App Experience</h1></header>
+    <main>
+      <p>This is the fullscreen app experience.</p>
+      <p>Enjoy the app features!</p>
+      <p>This app is licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License v3.0</a></p>
+    </main>
+  </div>
+
+</body>
+</html>
