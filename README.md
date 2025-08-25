@@ -125,7 +125,6 @@ In `index.html`:
 {
   "name": "DUAL-UX PWA",
   "short_name": "DUAL-UX",
-  "id": "/app",
   "start_url": "/app",
   "scope": "/",
   "display": "standalone",
