@@ -1,7 +1,25 @@
 
+
 # DUAL-UX — A Split Web/App Experience for PWAs
 
-> Deliver a *shareable, SEO-optimized* web experience **and** an *immersive, install-worthy* app experience from a single codebase. DUAL-UX formalizes the “two modes, one PWA” model for higher acquisition **and** retention.
+<h1 align="center">DUAL-UX Runtime</h1>
+
+<p align="center">
+  <em>One PWA, two experiences — Web UX + App UX from a single codebase.</em><br>
+  <em>⭐ Zero-Config Starter at <a href="https://starter.dual-ux.com">starter.dual-ux.com</a></em>
+</p>
+
+<p align="center">
+  <a href="https://starter.dual-ux.com">
+    <img src="https://img.shields.io/badge/demo-starter.dual--ux.com-brightgreen?style=for-the-badge" alt="Starter Demo">
+  </a>
+  <a href="https://github.com/dual-ux/pwa-dualux/releases">
+    <img src="https://img.shields.io/github/v/release/dual-ux/pwa-dualux?style=for-the-badge" alt="GitHub release (latest)">
+  </a>
+  <a href="https://github.com/dual-ux/pwa-dualux/blob/main/LICENSE-AGPL-3.0.txt">
+    <img src="https://img.shields.io/badge/license-AGPL--3.0-blue?style=for-the-badge" alt="License: AGPL-3.0">
+  </a>
+</p>
 
 ---
 
