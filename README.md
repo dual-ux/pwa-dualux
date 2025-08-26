@@ -98,18 +98,17 @@ In `index.html`:
 ### 3) Configure & initialize
 
 ```html
-<script type="module">
-  import { dualux } from './js/dualux.runtime.js';
-
-  dualux.configure({
-    enableLogging: false,
-    targets: { web: '#web-ux', app: '#app-ux', hiddenClass: 'hidden' },
-    mapping: { standaloneTo: 'app', browserTo: 'web' },
-    routes:  { appHome: '/app', webHome: '/' }
-  });
-
-  dualux.init();
-</script>
+<!-- DUAL-UX Runtime v1.1.0
+    * Event-driven UX-mode runtime with display-mode detection. -->
+  <script type="module">
+    import { dualux } from '/js/dualux.runtime.v1.1.0.js';
+    dualux.configure({
+      routing: { strategy: 'runtime' },   // no query/hash
+      routes:  { appHome: '/', webHome: '/' }, // optional; same entry
+      mapping: { standaloneTo: 'app', browserTo: 'web' }
+    });
+    dualux.init();
+  </script>
 ```
 
 > **Mapping:**  
@@ -173,31 +172,11 @@ self.addEventListener('fetch', e => {
 });
 ```
 
-## .htaccess Configuration
-
-The `.htaccess` file is used to handle URL rewriting on Apache servers. In the context of a Progressive Web App (PWA), it's essential for routing requests to the correct resources, especially for Single Page Applications (SPAs) where routes like `/app` need to be served with the main `index.html`.
-
-### Purpose
-
-The configuration ensures that when users navigate to `/app` or `/app/*`, the server will always serve the `index.html` file. This is important because PWAs are typically built as SPAs, and these routes should render the same app shell.
-
-### .htaccess File Example
-
-```apache
-# .htaccess (root)
-RewriteEngine On
-
-# Serve the SPA shell for /app and /app/*
-RewriteRule ^app($|/.*)$ /index.html [L]
-
-# (Important) Do NOT use [R] here; you want an internal rewrite, not a redirect.
-```
-
 ---
 
 ## Production Usage
 
-- **Use the minified runtime**: `js/dualux.runtime.min.js`.
+- **Use the minified runtime (when available)**: `js/dualux.runtime.v1.1.0.min.js`.
 - **Set cache headers** for icons, CSS, and JS; **no-cache** for `index.html`.
 - **Enable SPA fallback** on your CDN/host for routes like `/app/*` → `/index.html`.
 - **HTTPS** required for installability and service workers.
