@@ -42,7 +42,7 @@ workbox.precaching.precacheAndRoute([
   { url: '/assets/screenshots/website.png', revision: 'v1' },
 
   // JS bundles
-  { url: '/js/dualux.runtime.js', revision: 'v1' },
+  { url: '/js/dualux.runtime.v1.1.0.js', revision: 'v1' },
   { url: '/js/pwa-install.bundle.js', revision: 'v1' }
 ], {
   ignoreURLParametersMatching: [/./],

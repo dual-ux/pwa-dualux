@@ -7,6 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="Author: R.J. van der Zwan, Company: Easywebapp Inc. Category: Dual UX PWA, Patent." />
   <title>DUAL-UX PWA</title>
+
+<style>
+  /* Set your brand background once / avoids open app flicker*/
+  :root { --dualux-bg: #0b0b0f; } /* ← change to your brand color */
+  /* Paint the very first frame with your brand color (prevents white flash) */
+  html, body {
+    background: var(--dualux-bg);
+    margin: 0;
+    color-scheme: dark; /* helps UA widgets (iOS/Chrome) match dark bg */
+  }
+  /* Ensure whichever target shows first fills the viewport with the same bg */
+  #app-ux, #web-ux {
+    background: var(--dualux-bg);
+    min-height: 100vh;
+    min-height: 100dvh; /* modern viewports (iOS Safari, Chrome mobile) */
+  }
+</style>
+
   <link rel="stylesheet" href="/assets/css/style.css" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -19,21 +37,19 @@
   <!-- Optional: PWA Install bundle (for <pwa-install>) -->
   <script src="/js/pwa-install.bundle.js" defer></script>
 
-  <!-- DUAL-UX Runtime v1.0.0
-      * Event-driven UX-mode runtime with display-mode detection. -->
+  <!-- DUAL-UX Runtime v1.1.0
+    * Event-driven UX-mode runtime with display-mode detection. -->
   <script type="module">
-    import { dualux } from '/js/dualux.runtime.js';
+    import { dualux } from '/js/dualux.runtime.v1.1.0.js';
     dualux.configure({
-      enableLogging: true,
-      targets: { web: '#web-ux', app: '#app-ux', hiddenClass: 'hidden' },
-      mapping: { standaloneTo: 'app', browserTo: 'web' },
-      routes: { appHome: '/app', webHome: '/' },
-    });
-    dualux.on('modechange', ({ displayMode, uxMode }) => {
-      console.log('DUAL-UX modechange', { displayMode, uxMode });
+      routing: { strategy: 'runtime' },   // no query/hash
+      routes:  { appHome: '/', webHome: '/' }, // optional; same entry
+      mapping: { standaloneTo: 'app', browserTo: 'web' }
     });
     dualux.init();
   </script>
+
+  
   
 </head>
 <body>

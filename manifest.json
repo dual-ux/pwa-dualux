@@ -4,7 +4,7 @@
   "description": "DUAl UX Progressive Web App (PWA) Boilerplate.",
   "short_name": "DUAL UX",
   "scope": "/",
-  "start_url": "/app",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#000",

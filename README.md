@@ -77,10 +77,10 @@ If you use routes like `/app`, ensure your dev server rewrites unknown paths to 
 In `index.html`:
 ```html
 <!-- Dual-UX Runtime (use -min in production) -->
-<script type="module" src="js/dualux.runtime.js"></script>
+<script type="module" src="/js/dualux.runtime.js"></script>
 
 <!-- Register the service worker -->
-<script src="js/register-sw.js" defer></script>
+<script src="/js/register-sw.js" defer></script>
 ```
 
 ### 2) Provide two UX containers
@@ -125,7 +125,7 @@ In `index.html`:
 {
   "name": "DUAL-UX PWA",
   "short_name": "DUAL-UX",
-  "start_url": "/app",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "theme_color": "#000000",
